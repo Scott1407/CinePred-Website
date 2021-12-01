@@ -4,6 +4,8 @@ from PIL import Image
 import base64
 import numpy as np
 import requests
+import datetime
+import base64
 
 
 #Background
@@ -37,12 +39,11 @@ def background_image_style(path):
 image_path = '../images/b.jpeg'
 image_link = 'https://www.google.com/search?q=background+black+&tbm=isch&ved=2ahUKEwiZkbSs9r30AhWSDGMBHfUmBJYQ2-cCegQIABAA&oq=background+black+&gs_lcp=CgNpbWcQAzIHCCMQ7wMQJzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoGCAAQCBAeUOQKWKgUYLoWaABwAHgAgAFiiAHdBJIBAjEwmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=tvakYZneKZKZjLsP9c2QsAk&bih=630&biw=1433&hl=en#imgrc=45B6kmexcKSPFM'
 
-
-
 st.write(background_image_style(image_path), unsafe_allow_html=True)
 
 # Side bar
-make_choice = st.sidebar.selectbox('Pages:', ['New Movies','Create Your Own Movie'])
+make_choice = st.sidebar.selectbox('Pages:',
+                                   ['New Movies', 'Create Your Own Movie'])
 
 # First Page - New Movies Prediction
 if make_choice == 'New Movies':
@@ -58,12 +59,16 @@ if make_choice == 'New Movies':
     image_wil = Image.open('../images/williams.jpeg')
 
     col1, col2, col3 = st.columns(3)
-    col1.image(image_bat,caption='The Batman - April 2022',use_column_width="auto", width = 10)
+    col1.image(image_bat,
+               caption='The Batman - April 2022',
+               use_column_width="auto",
+               width=10)
     col2.image(image_Jur,
                caption='Jurassic World: Dominion - June 2022',
                use_column_width="auto")
-    col3.image(image_wil,caption='King Richard - December 2021',use_column_width="auto")
-
+    col3.image(image_wil,
+               caption='King Richard - December 2021',
+               use_column_width="auto")
     '''
     # Choose a movie going out soon 🍿
     '''
@@ -71,10 +76,13 @@ if make_choice == 'New Movies':
     title = st.text_input('Movie title', 'The Batman')
     st.write(f'Our revenue prediction for {title} is:')
 
-
+    param = {"title": title}
     #prediction
     if st.button('Revenue Prediction'):
-        st.write(' ## $100.000.000')
+        res = requests.get(url='http://127.0.0.1:8000/search_movie?',
+                           params=param)
+        pred = res.json()
+        st.write(pred)
         st.balloons()
 
     #Side bar Image
@@ -87,9 +95,6 @@ if make_choice == 'New Movies':
     audio_bytes = audio_file.read()
     st.sidebar.audio(audio_bytes, format='audio/ogg')
 
-
-
-
 # Second Page - Create your movie
 if make_choice == 'Create Your Own Movie':
     '''
@@ -101,17 +106,17 @@ if make_choice == 'Create Your Own Movie':
     image_jum = Image.open('../images/jumanji.jpeg')
 
     col1, col2, col3 = st.columns(3)
-    col1.image(image_roc,caption='Rocky IV',use_column_width="auto")
+    col1.image(image_roc, caption='Rocky IV', use_column_width="auto")
     col2.image(image_sta,
                caption='Star Wars: The Force Awakens',
                use_column_width="auto")
-    col3.image(image_jum,caption='Jumanji',use_column_width="auto")
+    col3.image(image_jum, caption='Jumanji', use_column_width="auto")
 
     def get_select_box_data():
 
         return pd.DataFrame({
             'director': [
-                "Sylvester Stallone", "Steven Spielberg", "Martin Scorsese",
+                "Steven Spielberg", "Sylvester Stallone", "Martin Scorsese",
                 "Quentin Tarantino", "James Cameron", "Spike Lee",
                 "Alfred Hitchcock", "Francis Ford Coppola", " George Lucas",
                 "Steven Soderbergh", "Ridley Scott", "Oliver Stone"
@@ -140,6 +145,12 @@ if make_choice == 'Create Your Own Movie':
                 "Cameron Diaz", "George Clooney", "Mark Wahlberg",
                 "Matt Damon", "Jason Statham", "Ben Stiller"
             ],
+            'third_actor': [
+                "Jean-Claude Van Damme ", "Adam Sandler", "Mel Gibson",
+                "Julia Roberts ", "Alec Baldwin", "Christian Bale",
+                "Kevin Spacey", "Jack Nicholson", "Joaquin Phoenix",
+                "Natalie Portman", "Hugh Jackman", "Penélope Cruz"
+            ],
             'Genres': [
                 "Drama", "Action", "Comedy", "Horror", "Thriller", "Romance",
                 "Animation", "Adventure", "Comedy", "Drama, Romance", "Family",
@@ -151,8 +162,8 @@ if make_choice == 'Create Your Own Movie':
             ]
         })
 
-
     df = get_select_box_data()
+    year = 2022
 
     director = st.selectbox('Select a Director', df['director'])
     filtered_dir = df[df['director'] == director]
@@ -160,62 +171,70 @@ if make_choice == 'Create Your Own Movie':
     writer = st.selectbox('Select a Writer', df['writer'])
     filtered_w = df[df['writer'] == writer]
 
-    production = st.selectbox('Select a Production Company', df['Prod'])
-    filtered_pd = df[df['Prod'] == production]
+    production_company = st.selectbox('Select a Production Company',
+                                      df['Prod'])
+    filtered_pd = df[df['Prod'] == production_company]
 
     main_actor = st.selectbox('Select a Main Actor', df['main_actor'])
     filtered_ma = df[df['main_actor'] == main_actor]
 
-    second_actor = st.selectbox('Select a Second Actor',df['second_actor'])
+    second_actor = st.selectbox('Select a Second Actor', df['second_actor'])
     filtered_sa = df[df['second_actor'] == second_actor]
 
-    budget = st.slider("Select your Budget", min_value= 0, max_value=100_000_000, step=1_000_000)
+    third_actor = st.selectbox('Select a third Actor', df['third_actor'])
+    filtered_sa = df[df['third_actor'] == third_actor]
 
-    duration = st.slider("Select the duration of your movie", min_value= 60, max_value=180, step=5)
+    budget = st.slider("Select your Budget (in millions)",
+                       min_value=1.0,
+                       max_value=1000.0,
+                       step=0.1)
 
-    genres = st.selectbox('Select a Genre', df['Genres'])
-    filtered_cou = df[df['Genres'] == genres]
+    duration = st.slider("Select the duration of your movie (in minutes)",
+                         min_value=60,
+                         max_value=180,
+                         step=5)
 
-    #months = st.selectbox('Select a Genre', df['Month'])
-    #filtered_month = df[df['Month'] == months]
+    genre = st.selectbox('Select a movie genre', df['Genres'])
+    filtered_cou = df[df['Genres'] == genre]
 
-    months = st.slider("Select the duration of your movie",
-                         min_value=1,
-                         max_value=12,
-                         step=1)
+    date_published = st.date_input("When do you want to publish your movie ?",
+                                   value=datetime.date(2022, 1, 1),
+                                   min_value=datetime.date(2022, 1, 1),
+                                   max_value=datetime.date(2022, 12, 31))
 
-    st.write(f"Our revenue prediction for your {genres} movie directed by {director}, written by {writer}, produced by {production}, with {main_actor}, and {second_actor}, for a budget of ${budget}, for a duration of {duration} minutes, going out in 0{months}/2022, is:")
+    st.write(
+        f"Our revenue prediction for your **{genre}** movie directed by **{director}**, written by **{writer}**, produced by **{production_company}**, with **{main_actor}**,**{second_actor}** and **{third_actor}**, for a budget of **${budget}**, for a duration of **{duration}** minutes, going out on **{date_published}**, is :"
+    )
+
     if st.button('Revenue Prediction'):
 
         parameters = {
-        'Director': director,
-        'Writer': writer,
-        'Production Company': production,
-        'Main Actor': main_actor,
-        'Second Actor': second_actor,
-        'Genres': genres,
-        'Duration': duration,
-        'Year': 2022,
-        'Sin': np.sin(2 * np.pi * months / 12),
-        'Cos': np.cos(2 * np.pi * months / 12)
+            'director': director,
+            'writer': writer,
+            'production_company': production_company,
+            'main_actor': main_actor,
+            'second_actor': second_actor,
+            'third_actor': third_actor,
+            'genre': genre,
+            'duration': duration,
+            'year': year,
+            'budget': budget,
+            'date_published': date_published
+            #'Sin': np.sin(2 * np.pi * months / 12),
+            #'Cos': np.cos(2 * np.pi * months / 12)
         }
-        response = requests.get(url = 'http://localhost:8000/predict')#, params=parameters)
-
+        response = requests.get(url='http://localhost:8000/test?',
+                                params=parameters)
         pred = response.json()
-        st.write(pred)
-        #st.write(pred["prediction"])
-        #st.write(' ## $100.000.000')
+        st.title(f"{np.round(pred['income']/1_000_000,2)} Millions")
         st.balloons()
-
-
-
 
     #Side bar Image
 
     image_avenger = Image.open('../images/Avengers.jpeg')
-    st.sidebar.image(image_avenger, caption= 'Avengers - End Game', use_column_width="auto")
-
-
+    st.sidebar.image(image_avenger,
+                     caption='Avengers - End Game',
+                     use_column_width="auto")
 
 #url = 'https://taxifare.lewagon.ai/predict'
 
