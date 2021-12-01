@@ -5,7 +5,6 @@ import base64
 import numpy as np
 import requests
 import datetime
-import base64
 
 
 #Background
