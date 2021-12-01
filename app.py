@@ -142,7 +142,7 @@ if make_choice == 'Create Your Own Movie':
                 "Jean Dujardin", "Franck Dubosc", "Angelina Jolie",
                 "Arnold Schwarzenegger", "Denzel Washington", "Vin Diesel",
                 "Cameron Diaz", "George Clooney", "Mark Wahlberg",
-                "Jean Claude Van Damme", "Jason Statham", "Ben Stiller"
+                "Jean-Claude Van Damme", "Jason Statham", "Ben Stiller"
             ],
             'third_actor': [
                 "Mel Gibson","Benoît Poelvoorde", "Adam Sandler",
