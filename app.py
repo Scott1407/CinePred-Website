@@ -35,7 +35,7 @@ def background_image_style(path):
     return style
 
 
-image_path = '../images/b.jpeg'
+image_path = 'images/b.jpeg'
 image_link = 'https://www.google.com/search?q=background+black+&tbm=isch&ved=2ahUKEwiZkbSs9r30AhWSDGMBHfUmBJYQ2-cCegQIABAA&oq=background+black+&gs_lcp=CgNpbWcQAzIHCCMQ7wMQJzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoGCAAQCBAeUOQKWKgUYLoWaABwAHgAgAFiiAHdBJIBAjEwmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=tvakYZneKZKZjLsP9c2QsAk&bih=630&biw=1433&hl=en#imgrc=45B6kmexcKSPFM'
 
 st.write(background_image_style(image_path), unsafe_allow_html=True)
@@ -53,9 +53,9 @@ if make_choice == 'New Movies':
     ## The Website Predicting The Next Blockbusters
     '''
     #Background image
-    image_bat = Image.open('../images/Batman22.jpg')
-    image_Jur = Image.open('../images/Jurassic.jpeg')
-    image_wil = Image.open('../images/williams.jpeg')
+    image_bat = Image.open('images/Batman22.jpg')
+    image_Jur = Image.open('images/Jurassic.jpeg')
+    image_wil = Image.open('images/williams.jpeg')
 
     col1, col2, col3 = st.columns(3)
     col1.image(image_bat,
@@ -85,12 +85,12 @@ if make_choice == 'New Movies':
         st.balloons()
 
     #Side bar Image
-    image_spider = Image.open('../images/Spiderman.jpeg')
+    image_spider = Image.open('images/Spiderman.jpeg')
     st.sidebar.image(image_spider,
                      caption='Spiderman - No Way Home',
                      use_column_width="auto")
     #audio
-    audio_file = open('../images/music1.mp3', 'rb')
+    audio_file = open('images/music1.mp3', 'rb')
     audio_bytes = audio_file.read()
     st.sidebar.audio(audio_bytes, format='audio/ogg')
 
@@ -100,9 +100,9 @@ if make_choice == 'Create Your Own Movie':
     # Create your own movie 🎞️
     '''
     #Background Image
-    image_roc = Image.open('../images/Rocky.jpg')
-    image_sta = Image.open('../images/Star.jpeg')
-    image_jum = Image.open('../images/jumanji.jpeg')
+    image_roc = Image.open('images/Rocky.jpg')
+    image_sta = Image.open('images/Star.jpeg')
+    image_jum = Image.open('images/jumanji.jpeg')
 
     col1, col2, col3 = st.columns(3)
     col1.image(image_roc, caption='Rocky IV', use_column_width="auto")
@@ -230,7 +230,7 @@ if make_choice == 'Create Your Own Movie':
 
     #Side bar Image
 
-    image_avenger = Image.open('../images/Avengers.jpeg')
+    image_avenger = Image.open('images/Avengers.jpeg')
     st.sidebar.image(image_avenger,
                      caption='Avengers - End Game',
                      use_column_width="auto")
