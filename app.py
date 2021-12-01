@@ -136,18 +136,18 @@ if make_choice == 'Create Your Own Movie':
                 "Brad Pitt", "Leonardo DiCaprio	", "Johnny Depp",
                 "Robert Downey Jr.", "Will Smith", "Robert De Niro",
                 "Dwayne Johnson", "Harrison Ford", "Tom Cruise",
-                "Charlize Theron", "Bruce Willis", "Daniel Craig"
+                "Jamel Debbouze", "Bruce Willis", "Daniel Craig"
             ],
             'second_actor': [
                 "Jean Dujardin", "Franck Dubosc", "Angelina Jolie",
                 "Arnold Schwarzenegger", "Denzel Washington", "Vin Diesel",
                 "Cameron Diaz", "George Clooney", "Mark Wahlberg",
-                "Matt Damon", "Jason Statham", "Ben Stiller"
+                "Jean Claude Van Damme", "Jason Statham", "Ben Stiller"
             ],
             'third_actor': [
-                "Jean-Claude Van Damme ", "Adam Sandler", "Mel Gibson",
+                "Mel Gibson","Benoît Poelvoorde", "Adam Sandler",
                 "Julia Roberts ", "Alec Baldwin", "Christian Bale",
-                "Kevin Spacey", "Jack Nicholson", "Joaquin Phoenix",
+                "Christian Clavier", "Jack Nicholson", "Joaquin Phoenix",
                 "Natalie Portman", "Hugh Jackman", "Penélope Cruz"
             ],
             'Genres': [
