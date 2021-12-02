@@ -72,11 +72,13 @@ if make_choice == 'New Movies':
     '''
     # Choose a movie going out soon 🍿
     '''
+    up_movies = st.selectbox('Select an upcoming movie',
+        ["Spiderman: No Way home", "The Batman", "Jurassic World: Dominion",
+        "King Richard"])
+    #title = st.text_input('Movie title', 'Enter upcoming movie')
+    st.write(f'Our revenue prediction for {up_movies} is:')
 
-    title = st.text_input('Movie title', 'Enter upcoming movie')
-    st.write(f'Our revenue prediction for {title} is:')
-
-    param = {"title": title}
+    param = {"title": up_movies}
     #prediction
     if st.button('Revenue Prediction'):
         res = requests.get(url='https://cinepred-g4p6tgs7da-ew.a.run.app/predict')#, params=param)
