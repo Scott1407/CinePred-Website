@@ -73,7 +73,7 @@ if make_choice == 'New Movies':
     # Choose a movie going out soon 🍿
     '''
 
-    title = st.text_input('Movie title', 'The Batman')
+    title = st.text_input('Movie title', 'Spiderman: No way home')
     st.write(f'Our revenue prediction for {title} is:')
 
     param = {"title": title}
