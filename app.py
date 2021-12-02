@@ -79,8 +79,7 @@ if make_choice == 'New Movies':
     param = {"title": title}
     #prediction
     if st.button('Revenue Prediction'):
-        res = requests.get(
-            url='https://cinepred-g4p6tgs7da-ew.a.run.app/test?', params=param)
+        res = requests.get(url='https://cinepred-g4p6tgs7da-ew.a.run.app/predict')#, params=param)
         pred = res.json()
         st.write(pred)
 
