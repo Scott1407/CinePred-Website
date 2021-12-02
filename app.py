@@ -73,7 +73,7 @@ if make_choice == 'New Movies':
     # Choose a movie going out soon 🍿
     '''
 
-    title = st.text_input('Movie title', 'Spiderman: No way home')
+    title = st.text_input('Movie title', 'Enter upcoming movie')
     st.write(f'Our revenue prediction for {title} is:')
 
     param = {"title": title}
@@ -81,18 +81,31 @@ if make_choice == 'New Movies':
     if st.button('Revenue Prediction'):
         res = requests.get(url='https://cinepred-g4p6tgs7da-ew.a.run.app/predict')#, params=param)
         pred = res.json()
-        st.title(f"${np.round(pred/1_000_000,2)} Millions")
+        col1, col2 = st.columns(2)
+        col1.title(f"${np.round(pred/1_000_000,2)} Millions")
+        col1.write('''
+                 **Actors**: Tom Holland, Zendaya, Jamie Foxx, Benedict Cumberbatch, Alfred Molina\n
+                 **Director**: Jon Watts\n
+                 **Production**: Company: Columbia Picture\n
+                 **Budget**: $180 Millions\n
+                 **Duration** : 2h30\n
+                 **Genre** : Adventures, Action, Sci-Fi\n
+                 **Release Date**: December 17th 2021
+                 '''
+                 )
+        image_spider = Image.open('images/Spiderman.jpeg')
+        col2.image(image_spider,
+                     caption='Spiderman: No Way Home',
+                     width=280)
+
+
 
 
     #Side bar Image
-    image_spider = Image.open('images/Spiderman.jpeg')
+    image_spider = Image.open('images/gru.jpeg')
     st.sidebar.image(image_spider,
-                     caption='Spiderman - No Way Home',
-                     use_column_width="auto")
-    #audio
-    audio_file = open('images/music1.mp3', 'rb')
-    audio_bytes = audio_file.read()
-    st.sidebar.audio(audio_bytes, format='audio/ogg')
+                     caption='Minions:The Rise of Gru',
+                     width=300)
 
 # Second Page - Create your movie
 if make_choice == 'Create Your Own Movie':
@@ -115,10 +128,18 @@ if make_choice == 'Create Your Own Movie':
 
         return pd.DataFrame({
             'director': [
-                "Steven Spielberg", "Sylvester Stallone", "Martin Scorsese",
-                "Quentin Tarantino", "James Cameron", "Spike Lee",
-                "Alfred Hitchcock", "Francis Ford Coppola", " George Lucas",
-                "Steven Soderbergh", "Ridley Scott", "Oliver Stone"
+                "Steven Spielberg",
+                "Martin Scorsese",
+                "Quentin Tarantino",
+                "James Cameron",
+                "Spike Lee",
+                "Alfred Hitchcock",
+                "Francis Ford Coppola",
+                " George Lucas",
+                "Steven Soderbergh",
+                "Ridley Scott",
+                "Oliver Stone",
+                "Aaron Sorkin"
             ],
             'writer': [
                 "Woody Allen", "Luc Besson", "John Hughes", "Spike Lee",
@@ -136,16 +157,16 @@ if make_choice == 'Create Your Own Movie':
                 "Brad Pitt", "Leonardo DiCaprio", "Johnny Depp",
                 "Robert Downey Jr.", "Will Smith", "Robert De Niro",
                 "Dwayne Johnson", "Harrison Ford", "Tom Cruise",
-                "Jamel Debbouze", "Bruce Willis", "Daniel Craig"
+                "Jean-Claude Van Damme", "Bruce Willis", "Daniel Craig"
             ],
             'second_actor': [
                 "Jean Dujardin", "Franck Dubosc", "Angelina Jolie",
                 "Arnold Schwarzenegger", "Denzel Washington", "Vin Diesel",
                 "Cameron Diaz", "George Clooney", "Mark Wahlberg",
-                "Jean-Claude Van Damme", "Jason Statham", "Ben Stiller"
+                "Jamel Debbouze", "Jason Statham", "Benoît Poelvoorde"
             ],
             'third_actor': [
-                "Mel Gibson","Benoît Poelvoorde", "Adam Sandler",
+                "Mel Gibson", "François Damiens", "Adam Sandler",
                 "Julia Roberts", "Alec Baldwin", "Christian Bale",
                 "Christian Clavier", "Jack Nicholson", "Joaquin Phoenix",
                 "Natalie Portman", "Hugh Jackman", "Penélope Cruz"
