@@ -14,9 +14,9 @@ port = $PORT\n\
 
 echo "\
 [theme]\n\
- primaryColor=#3872fb\n\
- backgroundColor=#0e1117\n\
- secondaryBackgroundColor=#cece1b\n\
- textColor=#fafafa\n\
- font=sans serif\n\
- " > ~/.streamlit/config.toml
+primaryColor=#3872fb\n\
+backgroundColor=#0e1117\n\
+secondaryBackgroundColor=#cece1b\n\
+textColor=#fafafa\n\
+font=sans serif\n\
+" > ~/.streamlit/config.toml

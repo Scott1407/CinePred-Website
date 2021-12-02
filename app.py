@@ -7,6 +7,7 @@ import requests
 import datetime
 
 
+
 #Background
 @st.cache
 def load_image(path):
@@ -78,8 +79,8 @@ if make_choice == 'New Movies':
     param = {"title": title}
     #prediction
     if st.button('Revenue Prediction'):
-        res = requests.get(url='http://127.0.0.1:8000/search_movie?',
-                           params=param)
+        res = requests.get(
+            url='https://cinepred-g4p6tgs7da-ew.a.run.app/test?', params=param)
         pred = res.json()
         st.write(pred)
 
