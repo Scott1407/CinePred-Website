@@ -222,7 +222,7 @@ if make_choice == 'Create Your Own Movie':
                                    max_value=datetime.date(2022, 12, 31))
 
     st.write(
-        f"Our revenue prediction for your **{genre}** movie directed by **{director}**, written by **{writer}**, produced by **{production_company}**, with **{main_actor}**, **{second_actor}** and **{third_actor}**, for a budget of **${budget}**, for a duration of **{duration}** minutes, going out on **{date_published}**, is :"
+        f"Our revenue prediction for your **{genre}** movie directed by **{director}**, written by **{writer}**, produced by **{production_company}**, with **{main_actor}**, **{second_actor}** and **{third_actor}**, for a budget of **${budget}**millions, for a duration of **{duration}** minutes, going out on **{date_published}**, is :"
     )
 
     if st.button('Revenue Prediction'):
