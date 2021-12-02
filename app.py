@@ -82,7 +82,7 @@ if make_choice == 'New Movies':
         res = requests.get(url='https://cinepred-g4p6tgs7da-ew.a.run.app/predict')#, params=param)
         pred = res.json()
         st.write(pred)
-        st.title(f"${np.round(pred['income']/1_000_000,2)} Millions")
+        st.title(f"${np.round(pred/1_000_000,2)} Millions")
 
 
     #Side bar Image
