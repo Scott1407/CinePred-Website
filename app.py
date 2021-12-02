@@ -82,7 +82,7 @@ if make_choice == 'New Movies':
                            params=param)
         pred = res.json()
         st.write(pred)
-        st.balloons()
+
 
     #Side bar Image
     image_spider = Image.open('images/Spiderman.jpeg')
@@ -133,7 +133,7 @@ if make_choice == 'Create Your Own Movie':
                 "Metro Goldwyn Mayer", "Miramax", "Hollywood Pictures"
             ],
             'main_actor': [
-                "Brad Pitt", "Leonardo DiCaprio	", "Johnny Depp",
+                "Brad Pitt", "Leonardo DiCaprio", "Johnny Depp",
                 "Robert Downey Jr.", "Will Smith", "Robert De Niro",
                 "Dwayne Johnson", "Harrison Ford", "Tom Cruise",
                 "Jamel Debbouze", "Bruce Willis", "Daniel Craig"
@@ -154,10 +154,6 @@ if make_choice == 'Create Your Own Movie':
                 "Drama", "Action", "Comedy", "Horror", "Thriller", "Romance",
                 "Animation", "Adventure", "Comedy", "Drama, Romance", "Family",
                 "Action, Thriller"
-            ],
-            'Month': [
-                "January", "February", "March", "April", "May", "June", "July",
-                "August", "September", "October", "November", "December"
             ]
         })
 
@@ -185,8 +181,8 @@ if make_choice == 'Create Your Own Movie':
 
     budget = st.slider("Select your Budget (in millions)",
                        min_value=1.0,
-                       max_value=1000.0,
-                       step=0.1)
+                       max_value=250.0,
+                       step=1.0)
 
     duration = st.slider("Select the duration of your movie (in minutes)",
                          min_value=60,
@@ -202,7 +198,7 @@ if make_choice == 'Create Your Own Movie':
                                    max_value=datetime.date(2022, 12, 31))
 
     st.write(
-        f"Our revenue prediction for your **{genre}** movie directed by **{director}**, written by **{writer}**, produced by **{production_company}**, with **{main_actor}**,**{second_actor}** and **{third_actor}**, for a budget of **${budget}**, for a duration of **{duration}** minutes, going out on **{date_published}**, is :"
+        f"Our revenue prediction for your **{genre}** movie directed by **{director}**, written by **{writer}**, produced by **{production_company}**, with **{main_actor}**, **{second_actor}** and **{third_actor}**, for a budget of **${budget}**, for a duration of **{duration}** minutes, going out on **{date_published}**, is :"
     )
 
     if st.button('Revenue Prediction'):
@@ -225,8 +221,8 @@ if make_choice == 'Create Your Own Movie':
         response = requests.get(url='http://localhost:8000/test?',
                                 params=parameters)
         pred = response.json()
-        st.title(f"{np.round(pred['income']/1_000_000,2)} Millions")
-        st.balloons()
+        st.title(f"${np.round(pred['income']/1_000_000,2)} Millions")
+
 
     #Side bar Image
 
