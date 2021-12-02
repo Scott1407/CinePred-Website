@@ -179,12 +179,13 @@ if make_choice == 'Create Your Own Movie':
     third_actor = st.selectbox('Select a third Actor', df['third_actor'])
     filtered_sa = df[df['third_actor'] == third_actor]
 
-    budget = st.slider("Select your Budget (in millions)",
+    budget = st.slider("Select your Budget (in millions)",value = 10.0,
                        min_value=1.0,
                        max_value=250.0,
                        step=1.0)
 
     duration = st.slider("Select the duration of your movie (in minutes)",
+                         value = 90,
                          min_value=60,
                          max_value=180,
                          step=5)
