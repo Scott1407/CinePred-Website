@@ -81,7 +81,6 @@ if make_choice == 'New Movies':
     if st.button('Revenue Prediction'):
         res = requests.get(url='https://cinepred-g4p6tgs7da-ew.a.run.app/predict')#, params=param)
         pred = res.json()
-        st.write(pred)
         st.title(f"${np.round(pred/1_000_000,2)} Millions")
 
 
