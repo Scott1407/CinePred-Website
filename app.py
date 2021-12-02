@@ -146,7 +146,7 @@ if make_choice == 'Create Your Own Movie':
             ],
             'third_actor': [
                 "Mel Gibson","Benoît Poelvoorde", "Adam Sandler",
-                "Julia Roberts ", "Alec Baldwin", "Christian Bale",
+                "Julia Roberts", "Alec Baldwin", "Christian Bale",
                 "Christian Clavier", "Jack Nicholson", "Joaquin Phoenix",
                 "Natalie Portman", "Hugh Jackman", "Penélope Cruz"
             ],
