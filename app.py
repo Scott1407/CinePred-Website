@@ -218,8 +218,9 @@ if make_choice == 'Create Your Own Movie':
             #'Sin': np.sin(2 * np.pi * months / 12),
             #'Cos': np.cos(2 * np.pi * months / 12)
         }
-        response = requests.get(url='http://localhost:8000/test?',
-                                params=parameters)
+        response = requests.get(
+            url='https://cinepred-g4p6tgs7da-ew.a.run.app/test?',
+            params=parameters)
         pred = response.json()
         st.title(f"${np.round(pred['income']/1_000_000,2)} Millions")
 
@@ -230,7 +231,3 @@ if make_choice == 'Create Your Own Movie':
     st.sidebar.image(image_avenger,
                      caption='Avengers - End Game',
                      use_column_width="auto")
-
-#url = 'https://taxifare.lewagon.ai/predict'
-
-#if url == 'https://taxifare.lewagon.ai/predict':
