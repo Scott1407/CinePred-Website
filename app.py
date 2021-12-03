@@ -72,9 +72,10 @@ if make_choice == 'New Movies':
     '''
     # Choose a movie going out soon 🍿
     '''
-    up_movies = st.selectbox('Select an upcoming movie',
-        ["Spiderman: No Way home", "The Batman", "Jurassic World: Dominion",
-        "King Richard"])
+    up_movies = st.selectbox('Select an upcoming movie', [
+        "The Batman", "Jurassic World: Dominion", "Spiderman: No Way home",
+        "King Richard"
+    ])
     #title = st.text_input('Movie title', 'Enter upcoming movie')
     st.write(f'Our revenue prediction for {up_movies} is:')
 
@@ -137,7 +138,7 @@ if make_choice == 'Create Your Own Movie':
                 "Spike Lee",
                 "Alfred Hitchcock",
                 "Francis Ford Coppola",
-                " George Lucas",
+                "George Lucas",
                 "Steven Soderbergh",
                 "Ridley Scott",
                 "Oliver Stone",
