@@ -131,23 +131,16 @@ if make_choice == 'Create Your Own Movie':
 
         return pd.DataFrame({
             'director': [
-                "Steven Spielberg",
-                "Martin Scorsese",
-                "Quentin Tarantino",
-                "James Cameron",
-                "Spike Lee",
-                "Alfred Hitchcock",
-                "Francis Ford Coppola",
-                "George Lucas",
-                "Steven Soderbergh",
-                "Ridley Scott",
-                "Oliver Stone",
-                "Aaron Sorkin"
+                "Steven Spielberg", "Martin Scorsese", "Quentin Tarantino",
+                "James Cameron", "Spike Lee", "Alfred Hitchcock",
+                "Francis Ford Coppola", "George Lucas", "Steven Soderbergh",
+                "Ridley Scott", "Oliver Stone", "Clint Eastwood"
             ],
             'writer': [
-                "Woody Allen", "Luc Besson", "John Hughes", "Spike Lee",
-                "William Shakespeare", "Christopher Nolan", "Clint Eastwood",
-                "Tim Burton", "John Hughes", "Steven Knight", "Mike Leigh",
+                "Aaron Sorkin",
+                "Woody Allen","Luc Besson","John Hughes","Spike Lee",
+                "William Shakespeare", "Christopher Nolan",
+                "Tim Burton","John Hughes","Steven Knight","Mike Leigh",
                 "John Sayles"
             ],
             'Prod': [
@@ -200,7 +193,7 @@ if make_choice == 'Create Your Own Movie':
     second_actor = st.selectbox('Select a Second Actor', df['second_actor'])
     filtered_sa = df[df['second_actor'] == second_actor]
 
-    third_actor = st.selectbox('Select a third Actor', df['third_actor'])
+    third_actor = st.selectbox('Select a Third Actor', df['third_actor'])
     filtered_sa = df[df['third_actor'] == third_actor]
 
     budget = st.slider("Select your Budget (in millions)",value = 10.0,
